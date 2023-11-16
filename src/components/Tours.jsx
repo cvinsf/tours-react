@@ -10,7 +10,6 @@ const Tours = ({tours, removeTour}) => {
             </div>
             <div className="tours">
                 {tours.map((tour) => {
-                    console.log('This is tour', tour)
                 return <Tour key={tour.id}{...tour} removeTour={removeTour} />
                 })}
             </div>
