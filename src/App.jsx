@@ -1,9 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react'
+
+const url = 'https://course-api.com/react-tours-project';
 
 function App() {
+  const [loading, setIsLoading] = useState(true);
+  const [tours, setTours] = useState([]);
+
+  const fetchTours = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch(url);
+      const tours = await response.json()
+      console.log(tours);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchTours()
+  },[])
   return <h2>Tours Starter</h2>
 }
 
